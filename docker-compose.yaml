@@ -7,9 +7,16 @@ services:
     # Specify the build context for the frontend
     build:
     # Map the host port to the container port
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
     # Specify dependencies (if applicable)
+      - "3000:3000"
+    # Use app network
+    networks:
+      - app-network
     depends_on:
+      - backend
 
     # Additional options (uncomment and configure as needed):
     
@@ -17,7 +24,8 @@ services:
     # environment:
     
     # Specify volume for live code reloading (optional)
-    # volumes:
+    volumes:
+      - ./frontend:/app
     
     # Specify the command to run the development server (if different from Dockerfile)
     # command:
@@ -26,22 +34,31 @@ services:
     # Specify the build context for the backend
     build:
     # Map the host port to the container port
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
+      - "4000:4000"
     
     # Additional options (uncomment and configure as needed):
     
     # Specify environment variables if needed
     # environment:
-    
+
+    # # Use app network
+    networks:
+      - app-network
     # Specify volume for live code reloading (optional)
-    # volumes:
+    volumes:
+      - ./backend:/app
     
     # Specify the command to run the development server (if different from Dockerfile)
     # command:
 
 # Additional components (uncomment and configure as needed):
 # Define a custom network (if applicable)
-# networks:
+networks:
+  app-network:
+    driver: bridge
 
 # Define volumes (if applicable)
 # volumes:
