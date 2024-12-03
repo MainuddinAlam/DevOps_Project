@@ -1,6 +1,6 @@
 # This is just a template placeholder docker-compose file. Use relevant sections which are applicable, 
 # and feel free to customize.
-version: '3'
+version: '3.8'
 
 services:
   frontend:
@@ -24,8 +24,7 @@ services:
     # environment:
     
     # Specify volume for live code reloading (optional)
-    volumes:
-      - ./frontend:/app
+    # volumes:
     
     # Specify the command to run the development server (if different from Dockerfile)
     # command:
@@ -48,8 +47,7 @@ services:
     networks:
       - app-network
     # Specify volume for live code reloading (optional)
-    volumes:
-      - ./backend:/app
+    # volumes:
     
     # Specify the command to run the development server (if different from Dockerfile)
     # command:

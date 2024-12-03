@@ -1,2 +1,7 @@
 flask
 flask-cors
+flask-testing
+unittest
+json
+pytest
+pytest-flask

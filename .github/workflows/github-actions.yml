@@ -1,32 +1,68 @@
 # TODO: Define the Workflow Name
-name: 
+name: Final Project CI/CD Pipeline
 
 # TODO: Define triggers for the workflow
 on:
-  # push:
-  #   branches: 
-  # pull_request:
-  #   branches: 
-
+  push:
+    branches: 
+     - main
+  pull_request:
+    branches: 
+     - main
+    
 jobs:
   # TODO: Define a job for building and testing the frontend
   frontend:
     runs-on: ubuntu-latest
     steps:
       # TODO: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2 
+
       # TODO: Setup Node.js
+      - name: Setting up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
       # TODO: Install dependencies
+      - name: Installing frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+
       # TODO: Run tests
+      - name: Running frontend tests
+        working-directory: ./frontend
+        run: npm test
+
       # TODO: Build the React app
+      - name: Building the React application
+        working-directory: ./frontend
+        run: npm run build
 
   # TODO: Define a job for building and testing the backend
   backend:
     runs-on: ubuntu-latest
     steps:
       # TODO: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2 
+
       # TODO: Setup Python
+      - name: Setting up python
+        uses: actions/setup-python@v2  
+        with:
+          python-version: 3.9  
+
       # TODO: Install dependencies
+      - name: Installing dependencies
+        working-direcotory: ./backend
+        run: pip install -r requirements.txt
+
       # TODO: Run tests
+      - name: Running tests
+        working-direcotory: ./backend
+        run: pytest
 
   # TODO: Define a job for building and pushing Docker images
   docker:
