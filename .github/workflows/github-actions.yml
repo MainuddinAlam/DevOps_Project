@@ -61,7 +61,7 @@ jobs:
 
       # TODO: Run tests
       - name: Running tests
-        working-direcotory: ./backend
+        working-directory: ./backend
         run: pytest
 
   # TODO: Define a job for building and pushing Docker images
