@@ -119,13 +119,18 @@ jobs:
         uses: actions/checkout@v2
 
       # Deploy code to frontend Render web service
-      curl -X POST ${{ secrets.RENDER_FRONTEND }} \
-           -H "Content-Type: application/json" \
-           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+      - name: Deploy to Render Frontend web service
+        run: |
+          curl -X POST ${{ secrets.RENDER_FRONTEND }} \
+               -H "Content-Type: application/json" \
+               -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
 
       # Deploy code to backend Render web service
-      curl -X POST ${{ secrets.RENDER_BACKEND }} \
-           -H "Content-Type: application/json" \
-           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+      - name: Deploy to Render Backend web service
+        run: |
+          curl -X POST ${{ secrets.RENDER_BACKEND }} \
+               -H "Content-Type: application/json" \
+               -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+
 
       
