@@ -39,7 +39,19 @@ My Docker-compose.yaml successfully builds the Frontend and Backend Dockerfiles 
 #### github-actions.yml file for CI/CD pipeline
 The github-actions.yml file implements the CI/CD pipeline needed to build, test and deploy the application. Pushing code and pull requests triggers the pipeline. My CI/CD pipeline first builds the frontend React application and tests it. Then it builds the backend Flask application and tests it. After the frontend and backend jobs the complete, the github-actions moves on to push the images to a repository of my Docker hub account. The Docker hub repository will have the frontend and backend Docker images which one can use to run them. 
 
-Finally, my github-actions.yml file will deploy the code to Render which is used to host the application. I have used Github secrets so that I can push images to Docker hub and deploy code to Render. I have given links to my Docker Hub repostiory containing the images and the calculator application hosted on render. The Calculator application maybe a bit slow to load because I am using free tier.
+Finally, my github-actions.yml file will deploy the updated code to Render. I have used Github secrets so that I can push images to Docker hub and deploy code to Render. I have given links to my Docker Hub repostiory containing the images and the calculator application hosted on render. The Calculator application maybe a bit slow to load because I am using free tier.
 * Docker hub link:- https://hub.docker.com/repository/docker/main71/devops-final-project/general
 * Calculator app on Render:- https://frontend-irteja.onrender.com/
 
+## Assumptions
+* Users wanting to test out the code need Docker in their local machine
+* The CI/CD pipeline should be able to build, test and deploy my application when I push my updated code on my Github repo.
+
+## Lessons Learned
+* Gained experience working with Dockerfiles and docker-compose.yml
+* Implementing CI/CD pipeline to deploy code was cool
+* These will help me with future projects
+
+## Future Improvements
+* I would like to make sure the CI/CD pipelint to implement triggers only when github-actions.yml file changes. Right now pipeline triggers when pushing code.
+* Maybe include environment variables in Dockerfiles and docker-compose.yaml file
