@@ -118,15 +118,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Deploy code to frontend Render web service
-      - name: Deploy to Render Frontend web service
+      # Deploying code to frontend Render web service
+      - name: Deploying code to frontend web service in Render
         run: |
           curl -X POST ${{ secrets.RENDER_FRONTEND }} \
                -H "Content-Type: application/json" \
                -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
 
       # Deploy code to backend Render web service
-      - name: Deploy to Render Backend web service
+      - name: Deploying code to backend web service in Render
         run: |
           curl -X POST ${{ secrets.RENDER_BACKEND }} \
                -H "Content-Type: application/json" \
