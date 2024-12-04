@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import math
+import os
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -138,6 +139,3 @@ def logarithm():
     result = math.log(number, base)
     return jsonify({'result': result})
 
-if __name__ == '__main__':
-    # Run the Flask application on port 
-    app.run(host='0.0.0.0', port=4000)

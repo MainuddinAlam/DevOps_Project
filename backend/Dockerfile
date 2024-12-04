@@ -15,7 +15,7 @@ EXPOSE 4000
 
 # Defining environment variable
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Use Gunicorn to run the Flask app
+CMD ["gunicorn", "--bind", "0.0.0.0:4000", "app:app"]
 
 # End of File

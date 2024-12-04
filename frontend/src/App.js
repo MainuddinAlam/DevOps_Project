@@ -91,6 +91,8 @@ function App() {
       return num_on_display.startsWith('-') ? num_on_display.slice(1) : '-' + num_on_display;
     });
   };
+
+  const backendURL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
  
   // Perform calculation and display the result
   const calculate_result = async () => {
@@ -99,7 +101,7 @@ function App() {
 
     try {
       // Request backend API with operands and operation type to get results
-      const api_response = await axios.post(`http://localhost:4000/api/${current_operation}`, {
+      const api_response = await axios.post(`${backendURL}/api/${current_operation}`, {
         number_1: first_operand,
         number_2: parseFloat(calculator_display)
       });
@@ -150,7 +152,7 @@ function App() {
       }
 
       // Request backend API with operand and operation type to get results
-      const api_response = await axios.post(`http://localhost:4000/api/${api_endpoint}`, request_payload);
+      const api_response = await axios.post(`${backendURL}/api/${api_endpoint}`, request_payload);
       // Format the returned result from API in case if large number
       const formatted_result = format_large_number(api_response.data.result);
       // Display result on the calculator display 
