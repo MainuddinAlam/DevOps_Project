@@ -89,14 +89,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # TODO: Build frontend Docker image and deploy to Docker repository 
-      - name: Building the frontend Docker image and push it to Docker repostiory
+      # TODO: Build frontend Docker image and deploy to Docker repository to run on multiple systems
+      - name: Building the frontend Docker image and push it to Docker repostiory to run on multiple systems
         working-directory: ./frontend
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 -t ${{ secrets.DOCKER_USERNAME }}/devops-final-project:frontend-latest --push .
 
-      # TODO: Build backend Docker image and push it to Docker repostiory
-      - name: Building the backend Docker image and push it to Docker repostiory
+      # TODO: Build backend Docker image and push it to Docker repostiory to run on multiple systems
+      - name: Building the backend Docker image and push it to Docker repostiory to run on multiple systems
         working-directory: ./backend
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 -t ${{ secrets.DOCKER_USERNAME }}/devops-final-project:backend-latest --push .
