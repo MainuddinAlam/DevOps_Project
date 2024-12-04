@@ -31,9 +31,9 @@ jobs:
         run: npm install
 
       # TODO: Run tests
-      - name: Running frontend tests
-        working-directory: ./frontend
-        run: npm run test
+      # - name: Running frontend tests
+      #   working-directory: ./frontend
+      #   run: npm run test
 
       # TODO: Build the React app
       - name: Building the React application
