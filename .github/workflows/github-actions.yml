@@ -33,7 +33,7 @@ jobs:
       # TODO: Run tests
       - name: Running frontend tests
         working-directory: ./frontend
-        run: npm test
+        run: npm run test
 
       # TODO: Build the React app
       - name: Building the React application
