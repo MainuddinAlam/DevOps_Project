@@ -109,8 +109,23 @@ jobs:
 
 
   # OPTIONAL: Define a deployment job (if applicable)
-  # deploy:
-  #   needs: docker
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # TODO: Add deployment steps
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Add deployment steps
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Deploy code to frontend Render web service
+      curl -X POST ${{ secrets.RENDER_FRONTEND }} \
+           -H "Content-Type: application/json" \
+           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+
+      # Deploy code to backend Render web service
+      curl -X POST ${{ secrets.RENDER_BACKEND }} \
+           -H "Content-Type: application/json" \
+           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+
+      
