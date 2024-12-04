@@ -21,6 +21,5 @@ EXPOSE 3000
 
 # Define environment variable
 
-
 # Run the app when the container launches
 CMD [ "npm",  "start"]
